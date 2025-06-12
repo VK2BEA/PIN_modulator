@@ -18,8 +18,8 @@ end
 
 # Load bootloader symbols
 set confirm off
-    add-symbol-file /home/michael/ESP32/PINmodulator/build/bootloader/bootloader.elf
+    add-symbol-file /home/michael/git/PIN_modulator/build/bootloader/bootloader.elf
 set confirm on
 
 # Load application symbols
-file /home/michael/ESP32/PINmodulator/build/app-template.elf
+file /home/michael/git/PIN_modulator/build/app-template.elf

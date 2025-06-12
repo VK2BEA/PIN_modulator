@@ -1,4 +1,4 @@
-# Install script for directory: /home/michael/ESP32/PINmodulator/main
+# Install script for directory: /home/michael/git/PIN_modulator/main
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

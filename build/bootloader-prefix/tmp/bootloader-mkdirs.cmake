@@ -10,18 +10,18 @@ if(NOT EXISTS "/home/michael/esp32/esp-idf-v5.4.1/components/bootloader/subproje
   file(MAKE_DIRECTORY "/home/michael/esp32/esp-idf-v5.4.1/components/bootloader/subproject")
 endif()
 file(MAKE_DIRECTORY
-  "/home/michael/ESP32/PINmodulator/build/bootloader"
-  "/home/michael/ESP32/PINmodulator/build/bootloader-prefix"
-  "/home/michael/ESP32/PINmodulator/build/bootloader-prefix/tmp"
-  "/home/michael/ESP32/PINmodulator/build/bootloader-prefix/src/bootloader-stamp"
-  "/home/michael/ESP32/PINmodulator/build/bootloader-prefix/src"
-  "/home/michael/ESP32/PINmodulator/build/bootloader-prefix/src/bootloader-stamp"
+  "/home/michael/git/PIN_modulator/build/bootloader"
+  "/home/michael/git/PIN_modulator/build/bootloader-prefix"
+  "/home/michael/git/PIN_modulator/build/bootloader-prefix/tmp"
+  "/home/michael/git/PIN_modulator/build/bootloader-prefix/src/bootloader-stamp"
+  "/home/michael/git/PIN_modulator/build/bootloader-prefix/src"
+  "/home/michael/git/PIN_modulator/build/bootloader-prefix/src/bootloader-stamp"
 )
 
 set(configSubDirs )
 foreach(subDir IN LISTS configSubDirs)
-    file(MAKE_DIRECTORY "/home/michael/ESP32/PINmodulator/build/bootloader-prefix/src/bootloader-stamp/${subDir}")
+    file(MAKE_DIRECTORY "/home/michael/git/PIN_modulator/build/bootloader-prefix/src/bootloader-stamp/${subDir}")
 endforeach()
 if(cfgdir)
-  file(MAKE_DIRECTORY "/home/michael/ESP32/PINmodulator/build/bootloader-prefix/src/bootloader-stamp${cfgdir}") # cfgdir has leading slash
+  file(MAKE_DIRECTORY "/home/michael/git/PIN_modulator/build/bootloader-prefix/src/bootloader-stamp${cfgdir}") # cfgdir has leading slash
 endif()

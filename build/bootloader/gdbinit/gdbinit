@@ -1,2 +1,2 @@
-source /home/michael/ESP32/PINmodulator/build/bootloader/gdbinit/symbols
-source /home/michael/ESP32/PINmodulator/build/bootloader/gdbinit/connect
+source /home/michael/git/PIN_modulator/build/bootloader/gdbinit/symbols
+source /home/michael/git/PIN_modulator/build/bootloader/gdbinit/connect
