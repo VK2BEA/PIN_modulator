@@ -1,0 +1,2 @@
+source /home/michael/ESP32/PINmodulator/build/gdbinit/symbols
+source /home/michael/ESP32/PINmodulator/build/gdbinit/connect
