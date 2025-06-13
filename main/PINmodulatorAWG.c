@@ -79,14 +79,11 @@ static void initialize_logSineTable( void ) {
         littleEndian32 = (int32_t)( x * (double)FIXED_POINT_SCALE);
         sineWave[ i ] = littleEndian32;
 		
-        // apply a log function and scale -1 to +1
-        // x = (pow( 10.0, (x+1.0)/2.0 ) - 5.5) / 4.5;
+        // 95% AM modulation - from 1 (100% / 0dB) to -1 (1% / -20dB)
+        // The HP8733B measures 0.1mA (-4.1dB) and 0.9ma (-25dB) (difference of -20.9dB)
+        // The output voltage from DAC +/-3V is processed to 0.1 mA to 0.9ma
 
-        // 95% AM modulation - from 1 (100% (0dB) to -1 (1% (-20dB))
-        // 0.1mA (-4.1dB) to 0.9ma (-25dB) (-20.9dB)
-        // Output voltage from DAC 3V is processed to 0.1 mA & -3V to 0.9ma (0.9mA)
-
-#define MIN_SIGNAL_RATIO      0.01  // AM from 1.0 x max to 0.01 x max
+#define MIN_SIGNAL_RATIO      0.01  // AM from 1.0 x max (100% modulation) to 0.01 x max (1%)
 #define MAX_ATTN_dB         -20.00  // 20dB i.e. a ratio of 1:100
 
         // Scale sample on sinewave and offset to 0.01 to 1.0 for log (-2 to 0)
