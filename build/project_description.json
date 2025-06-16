@@ -1,7 +1,7 @@
 {
     "version":            "1.2",
     "project_name":       "app-template",
-    "project_version":    "1e5f7b6-dirty",
+    "project_version":    "5aeb844-dirty",
     "project_path":       "/home/michael/git/PIN_modulator",
     "idf_path":           "/home/michael/esp32/esp-idf-v5.4.1",
     "build_dir":          "/home/michael/git/PIN_modulator/build",

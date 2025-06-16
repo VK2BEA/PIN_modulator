@@ -83,16 +83,18 @@ static void initialize_logSineTable( void ) {
         // The HP8733B measures 0.1mA (-4.1dB) and 0.9ma (-25dB) (difference of -20.9dB)
         // The output voltage from DAC +/-3V is processed to 0.1 mA to 0.9ma
 
-#define MIN_SIGNAL_RATIO      0.01  // AM from 1.0 x max (100% modulation) to 0.01 x max (1%)
-#define MAX_ATTN_dB         -20.00  // 20dB i.e. a ratio of 1:100
+#define MIN_SIGNAL_RATIO           0.01         // AM from 1.0 x max (100% modulation) to 0.01 x max (1%)
+#define MAX_ATTN_dB              -20.00         // 20dB i.e. a ratio of 1:100
 
-        // Scale sample on sinewave and offset to 0.01 to 1.0 for log (-2 to 0)
+// the sine wave sample is between -1.0 to 1.0 
+// 1. map this to a ratio from 0.01 (-20dB) to 1.0 (0dB)
         x = (x * (1.0 - MIN_SIGNAL_RATIO) + (1.0 + MIN_SIGNAL_RATIO) ) / 2.0;
-        // take to log and scale ( log(0.01) == -2 and log10(1.0) == 0 )
-        x = log10( x ) / (MAX_ATTN_dB/10.0);
-        // Scale and offset to between -1.0 and 1.0
-        x = -2.0 * (x - 0.5);
-        if (x > -0.5) x=-0.5;
+// 2. take the log10 of the sample, normalize and map it between -1 (-20dB) and 1 (0dB)
+        x = -2.0 * ( (log10( x ) / (MAX_ATTN_dB/10.0)) - 0.5 );
+// The PIN modulator has an anti-log response (attenuation vs current)
+// so we apply a log sine wave current      
+		if (x < -1.0) x=-1.0;	// precaution in case of rounding error to avoid glitch
+// 3. map to 32 bit range 
         littleEndian32 = (int32_t)( x * (double)FIXED_POINT_SCALE);
         log_SineWave[ i ] = littleEndian32;
     }
